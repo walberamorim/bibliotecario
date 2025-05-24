@@ -46,10 +46,18 @@ def perguntar_robo(pergunta):
     return mensagem, pesquisar_artigos
 
 def pesquisar_artigos(chaves):
+    artigos_selecionados = []
 
-    ...
+    sucesso, resposta = acessar_robo(URL_ROBO_PESQUISAR_ARTIGOS, {"chave1": chaves[0], "chave2": chaves[1], "chave3": chaves[2], "chave4": chaves[3], "chave5": chaves[4], "chave6": chaves[5], "chave7": chaves[6]})
+    if sucesso:
+        artigos = resposta["artigos"]
+        if artigos:
+            ordem = 1
+            for artigo in artigos:
+                artigos_selecionados.append({"id": artigo["id"], "titulo": f"{ordem} - {artigo["titulo"]}" , "artigo": artigo["artigo"]})
+                ordem += 1
     
-    return None
+    return artigos_selecionados
 
 @chat.get("/")
 def index():
