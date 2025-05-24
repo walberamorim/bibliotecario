@@ -26,7 +26,7 @@ def executar(robo):
         resposta = robo.get_response(mensagem.lower())
 
         if(resposta.confidence >= CONFIANCA_MINIMA):
-            print(f"🤖: {resposta.text}. Confiança = {resposta.confidence}")
+            print(f"🤖: {resposta.text}. Confianca = {resposta.confidence}")
         else:
             print(f"🤖: Infelizmente, ainda não sei responder essa pergunta. Confiança = {resposta.confidence}")
             # registrar a pergunta em um log
